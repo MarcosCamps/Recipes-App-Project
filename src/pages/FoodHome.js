@@ -1,8 +1,13 @@
 import React from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function FoodHome() {
   return (
-    <h1>Tela de FoodHome</h1>
+    <>
+      <Header Title="Foods" />
+      <Footer />
+    </>
   );
 }
 
