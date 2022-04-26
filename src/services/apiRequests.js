@@ -6,7 +6,7 @@ async function handleFetch(endpoint) {
 }
 
 export async function fetchSearchByIngredient(ingredient, type) {
-  const drinkEndpoint = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient};`;
+  const drinkEndpoint = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`;
   const foodEndpoint = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`;
   if (type === 'Foods') return handleFetch(foodEndpoint);
   if (type === 'Drinks') return handleFetch(drinkEndpoint);

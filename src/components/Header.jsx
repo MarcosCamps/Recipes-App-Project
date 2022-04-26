@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { fetchSearchByIngredient,
-  fetchSearchByName, fetchByFirstLetter } from '../services/apiRequests';
-import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import {
+  fetchSearchByIngredient,
+  fetchSearchByName, fetchByFirstLetter,
+} from '../services/apiRequests';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 
@@ -13,8 +15,10 @@ function Header({ Title }) {
 
   const changeRoute = () => {
     history.push('/profile');
+  };
 
   function onSearchClick() {
+    console.log(Title);
     switch (searchType) {
     case 'ingredient':
       return fetchSearchByIngredient(searchInput, Title);
@@ -28,7 +32,7 @@ function Header({ Title }) {
   }
 
   return (
-      <div>
+    <div>
       <button
         type="button"
         onClick={ changeRoute }
@@ -39,8 +43,8 @@ function Header({ Title }) {
           alt="Profile Icon"
         />
       </button>
-      <h2 data-testid="page-title">{ Title }</h2>
-      { Title === 'Foods' || Title === 'Drinks' || Title === 'Explore Nationalities' ? (
+      <h2 data-testid="page-title">{Title}</h2>
+      {Title === 'Foods' || Title === 'Drinks' || Title === 'Explore Nationalities' ? (
         <button
           type="button"
         >
@@ -51,58 +55,58 @@ function Header({ Title }) {
           />
         </button>
       ) : ''}
-    <section className="search-container">
-      <input
-        type="text"
-        data-testid="search-input"
-        value={ searchInput }
-        onChange={ ({ target: { value } }) => setSearchInput(value) }
-      />
-      <div
-        name="search-type"
-        value={ searchType }
-        onChange={ ({ target: { value } }) => setSearchType(value) }
-      >
-        <label htmlFor="ingredient-search">
-          Ingrediente
-          <input
-            type="radio"
-            name="search-type"
-            id="ingredient-search"
-            data-testid="ingredient-search-radio"
-            value="ingredient"
-          />
-        </label>
-        <label htmlFor="name-search">
-          Nome
-          <input
-            type="radio"
-            name="search-type"
-            id="name-search"
-            data-testid="name-search-radio"
-            value="name"
-          />
-        </label>
-        <label htmlFor="first-letter-search">
-          Primeira Letra
-          <input
-            type="radio"
-            name="search-type"
-            id="first-letter-search"
-            data-testid="first-letter-search-radio"
-            value="first-letter"
-          />
-        </label>
-      </div>
-      <button
-        type="button"
-        data-testid="exec-search-btn"
-        onClick={ onSearchClick }
-      >
-        Search
-      </button>
-    </section>
-   </div>
+      <section className="search-container">
+        <input
+          type="text"
+          data-testid="search-input"
+          value={ searchInput }
+          onChange={ ({ target: { value } }) => setSearchInput(value) }
+        />
+        <div
+          name="search-type"
+          value={ searchType }
+          onChange={ ({ target: { value } }) => setSearchType(value) }
+        >
+          <label htmlFor="ingredient-search">
+            Ingrediente
+            <input
+              type="radio"
+              name="search-type"
+              id="ingredient-search"
+              data-testid="ingredient-search-radio"
+              value="ingredient"
+            />
+          </label>
+          <label htmlFor="name-search">
+            Nome
+            <input
+              type="radio"
+              name="search-type"
+              id="name-search"
+              data-testid="name-search-radio"
+              value="name"
+            />
+          </label>
+          <label htmlFor="first-letter-search">
+            Primeira Letra
+            <input
+              type="radio"
+              name="search-type"
+              id="first-letter-search"
+              data-testid="first-letter-search-radio"
+              value="first-letter"
+            />
+          </label>
+        </div>
+        <button
+          type="button"
+          data-testid="exec-search-btn"
+          onClick={ onSearchClick }
+        >
+          Search
+        </button>
+      </section>
+    </div>
   );
 }
 
