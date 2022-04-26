@@ -7,16 +7,12 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 
 function Header({ Title }) {
+  const [searchInput, setSearchInput] = useState('');
+  const [searchType, setSearchType] = useState('');
   const history = useHistory();
 
   const changeRoute = () => {
     history.push('/profile');
-  };
-
-
-function Header({ Title }) {
-  const [searchInput, setSearchInput] = useState('');
-  const [searchType, setSearchType] = useState('');
 
   function onSearchClick() {
     switch (searchType) {
