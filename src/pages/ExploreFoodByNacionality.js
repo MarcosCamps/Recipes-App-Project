@@ -1,8 +1,12 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function ExploreFoodByNationality() {
   return (
-    <h1>Tela de ExploreFoodByNationality</h1>
+    <>
+      <Header Title="Explore Nationalities" />
+      <h1>Tela de ExploreFoodByNationality</h1>
+    </>
   );
 }
 
