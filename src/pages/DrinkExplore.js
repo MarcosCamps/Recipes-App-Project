@@ -1,8 +1,9 @@
 import React from 'react';
+import Footer from '../components/Footer';
 
 function DrinkExplore() {
   return (
-    <h1>Tela de DrinkExplore</h1>
+    <Footer />
   );
 }
 

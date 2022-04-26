@@ -1,8 +1,9 @@
 import React from 'react';
+import Footer from '../components/Footer';
 
 function ExploreFoodByNationality() {
   return (
-    <h1>Tela de ExploreFoodByNationality</h1>
+    <Footer />
   );
 }
 

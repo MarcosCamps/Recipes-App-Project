@@ -1,8 +1,12 @@
 import React from 'react';
+import Footer from '../components/Footer';
 
 function FoodHome() {
   return (
-    <h1>Tela de FoodHome</h1>
+    <div>
+      <h1>Tela de FoodHome</h1>
+      <Footer />
+    </div>
   );
 }
 

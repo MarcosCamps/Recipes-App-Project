@@ -1,8 +1,9 @@
 import React from 'react';
+import Footer from '../components/Footer';
 
 function Profile() {
   return (
-    <h1>Tela de Profile</h1>
+    <Footer />
   );
 }
 

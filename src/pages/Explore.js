@@ -1,8 +1,9 @@
 import React from 'react';
+import Footer from '../components/Footer';
 
 function Explore() {
   return (
-    <h1>Tela de Explore</h1>
+    <Footer />
   );
 }
 
