@@ -1,8 +1,9 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function FoodHome() {
   return (
-    <h1>Tela de FoodHome</h1>
+    <Header Title="Foods" />
   );
 }
 

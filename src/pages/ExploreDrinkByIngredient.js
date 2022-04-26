@@ -1,8 +1,12 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function ExploreDrinkByIngredient() {
   return (
-    <h1>Tela de ExploreDrinkByIngredient</h1>
+    <>
+      <Header Title="Explore Ingredients" />
+      <h1>Tela de ExploreDrinkByIngredient</h1>
+    </>
   );
 }
 
