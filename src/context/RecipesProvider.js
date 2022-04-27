@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import recipesContext from './RecipesContext';
 
 function RecipesProvider({ children }) {
-  const contextValue = {};
+  const contextValue = {
+  };
 
   return (
     <recipesContext.Provider value={ contextValue }>
