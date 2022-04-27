@@ -1,30 +1,37 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   fetchSearchByIngredient,
   fetchSearchByName, fetchByFirstLetter,
 } from '../services/apiRequests';
-
-const limit = 12;
+import recipesContext from '../context/RecipesContext';
 
 function SearchBar({ Title }) {
+  const {
+    recipes,
+    setRecipes,
+    setIsSearching,
+  } = useContext(recipesContext);
   const [searchInput, setSearchInput] = useState('');
   const [searchType, setSearchType] = useState('');
-  const [recipes, setRecipes] = useState({});
-  const [isSearchingDrink, setIsSearchingDrink] = useState(false);
-  const [isSearchingFood, setIsSearchingFood] = useState(false);
+  /* const [isSearchingDrink, setIsSearchingDrink] = useState(false);
+  const [isSearchingFood, setIsSearchingFood] = useState(false); */
   const history = useHistory();
 
   function foodDetailsPush() {
     const { meals } = recipes;
+    console.log(recipes);
+    console.log(meals);
     if (meals.length === 1) {
       history.push(`/foods/${meals[0].idMeal}`);
     }
   }
   function drinkDetailsPush() {
     const { drinks } = recipes;
+    console.log(recipes);
+    console.log(drinks);
     if (drinks.length === 1) {
       history.push(`/drinks/${drinks[0].idDrink}`);
     }
@@ -32,7 +39,6 @@ function SearchBar({ Title }) {
 
   function showRecipesList() {
     const type = Object.keys(recipes)[0];
-    console.log(recipes[type]);
     if (recipes[type]) {
       if (Object.keys(recipes)[0] === 'meals') {
         foodDetailsPush();
@@ -52,15 +58,13 @@ function SearchBar({ Title }) {
     case 'ingredient': {
       const response = await fetchSearchByIngredient(searchInput, Title);
       setRecipes(response);
-      if (Title === 'Foods') setIsSearchingFood(true);
-      if (Title === 'Drinks') setIsSearchingDrink(true);
+      setIsSearching(true);
       break;
     }
     case 'name': {
       const response = await fetchSearchByName(searchInput, Title);
       setRecipes(response);
-      if (Title === 'Foods') setIsSearchingFood(true);
-      if (Title === 'Drinks') setIsSearchingDrink(true);
+      setIsSearching(true);
       break;
     }
     case 'first-letter': {
@@ -69,8 +73,7 @@ function SearchBar({ Title }) {
       }
       const response = await fetchByFirstLetter(searchInput, Title);
       setRecipes(response);
-      if (Title === 'Foods') setIsSearchingFood(true);
-      if (Title === 'Drinks') setIsSearchingDrink(true);
+      setIsSearching(true);
       break;
     }
     default:
@@ -135,7 +138,7 @@ function SearchBar({ Title }) {
           Search
         </button>
       </section>
-      <section>
+      {/* <section>
         { isSearchingDrink && recipes.drinks.slice(0, limit).map((recipe, index) => (
           <div data-testid={ `${index}-recipe-card` } key={ index }>
             <img
@@ -156,7 +159,7 @@ function SearchBar({ Title }) {
             <p data-testid={ `${index}-card-name` }>{recipe.strMeal}</p>
           </div>
         ))}
-      </section>
+      </section> */}
     </div>
   );
 }
