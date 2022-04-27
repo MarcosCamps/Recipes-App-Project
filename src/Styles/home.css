@@ -1,0 +1,14 @@
+.recipes-container {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 360px;
+}
+
+.recipes-container > div {
+  width: 50%;
+}
+
+.recipes-container > div img {
+  width: 90%;
+}
+
