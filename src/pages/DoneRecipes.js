@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import recipesContext from '../context/RecipesContext';
@@ -12,12 +12,13 @@ function DoneRecipes() {
     doneRecipes,
     setDoneRecipes,
   } = useContext(recipesContext);
-  let copied = '';
+  const [isCopied, setIsCopied] = useState(false);
+  const copiedText = 'Link copied!';
 
   function copyUrl(type, id) {
+    setIsCopied(true);
     const url = `http://localhost:3000/${type}s/${id}`;
     copy(url);
-    copied = 'Link copied!';
   }
 
   function topText(recipe) {
@@ -48,14 +49,14 @@ function DoneRecipes() {
       <button
         type="button"
         data-testid="filter-by-drink-btn"
-        onClick={ () => onClickFilter('drinks') }
+        onClick={ () => onClickFilter('drink') }
       >
         Drinks
       </button>
       <button
         type="button"
         data-testid="filter-by-food-btn"
-        onClick={ () => onClickFilter('foods') }
+        onClick={ () => onClickFilter('food') }
       >
         Food
       </button>
@@ -80,7 +81,10 @@ function DoneRecipes() {
               data-testid={ `${index}-horizontal-image` }
               src={ recipe.image }
               alt="Imagem da receita"
+              width="300px"
             />
+          </Link>
+          <Link to={ `/${recipe.type}s/${recipe.id}` }>
             <p data-testid={ `${index}-horizontal-name` }>{ recipe.name }</p>
           </Link>
           <p data-testid={ `${index}-horizontal-done-date` }>{ recipe.doneDate }</p>
@@ -105,7 +109,7 @@ function DoneRecipes() {
               alt="Button to share the recipe"
             />
           </button>
-          <p>{ copied }</p>
+          <p>{ isCopied && copiedText }</p>
         </section>
       )) }
     </>
