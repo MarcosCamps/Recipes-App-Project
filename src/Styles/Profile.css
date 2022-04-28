@@ -1,0 +1,22 @@
+.profile-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-container > button {
+  border-radius: 4px;
+  font-size: larger;
+  height: 100px;
+  margin: 1em 0;
+  width: 90%;
+}
+
+.profile-done-btn {
+  background-image: url('../images/lasanha.jpeg');
+  background-size: cover;
+}
+
+.profile-favorite-btn {
+  background-image: url('../images/bolo.jpeg');
+}
