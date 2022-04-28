@@ -5,12 +5,15 @@ import recipesContext from './RecipesContext';
 function RecipesProvider({ children }) {
   const [recipes, setRecipes] = useState({});
   const [isSearching, setIsSearching] = useState(false);
+  const [doneRecipes, setDoneRecipes] = useState([]);
 
   const contextValue = {
     recipes,
     setRecipes,
     isSearching,
     setIsSearching,
+    doneRecipes,
+    setDoneRecipes,
   };
 
   return (
