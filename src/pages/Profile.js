@@ -6,7 +6,7 @@ import '../Styles/Profile.css';
 
 function Profile() {
   const history = useHistory();
-  const userEmail = JSON.parse(localStorage.getItem('user')).email;
+  const userEmail = JSON.parse(localStorage.getItem('user'))?.email;
 
   function logout() {
     localStorage.clear();
