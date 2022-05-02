@@ -25,3 +25,13 @@ export async function fetchByFirstLetter(firstLetter, type) {
   if (type === 'Foods') return handleFetch(foodEndpoint);
   if (type === 'Drinks') return handleFetch(drinkEndpoint);
 }
+
+export async function randomAPIMeal() {
+  const foodEndpoint = 'https://www.themealdb.com/api/json/v1/1/random.php';
+  return handleFetch(foodEndpoint);
+}
+
+export async function randomAPIDrink() {
+  const drinkEndpoint = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+  return handleFetch(drinkEndpoint);
+}
