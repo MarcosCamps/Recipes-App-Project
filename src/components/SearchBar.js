@@ -50,7 +50,7 @@ function SearchBar({ Title }) {
     switch (searchType) {
     case 'ingredient': {
       const response = await fetchSearchByIngredient(searchInput, Title);
-      response[mealType] ??= [];
+      if (response[mealType] === null) response[mealType] = [];
       oneMealOnly(response);
       setRecipes(response);
       setIsSearching(true);
@@ -58,7 +58,7 @@ function SearchBar({ Title }) {
     }
     case 'name': {
       const response = await fetchSearchByName(searchInput, Title);
-      response[mealType] ??= [];
+      if (response[mealType] === null) response[mealType] = [];
       oneMealOnly(response);
       setRecipes(response);
       setIsSearching(true);
@@ -69,8 +69,7 @@ function SearchBar({ Title }) {
         global.alert('Your search must have only 1 (one) character');
       }
       const response = await fetchByFirstLetter(searchInput, Title);
-      response[mealType] ??= [];
-      console.log(response);
+      if (response[mealType] === null) response[mealType] = [];
       oneMealOnly(response);
       setRecipes(response);
       setIsSearching(true);
