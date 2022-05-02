@@ -4,11 +4,11 @@
   max-width: 360px;
 }
 
-.recipes-container > div {
+.recipes-container > a {
   width: 50%;
 }
 
-.recipes-container > div img {
+.recipes-container > a img {
   width: 90%;
 }
 
