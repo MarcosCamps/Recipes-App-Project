@@ -26,8 +26,8 @@ describe('Tela de Receitas Favoritas', () => {
     it('Implemente os elementos da tela de receitas favoritas (cumulativo com os atribut'
       + 'os em comum com a tela de receitas feitas) respeitando os atributos descritos no'
       + 'protótipo', async () => {
-      const filterByAll = screen.getByTestId('filter-by-all-btn');
-      const filterByFood = screen.getByTestId('filter-by-food-btn');
+      const filterByAll = screen.getByTestId(FILTER_BY_ALL);
+      const filterByFood = screen.getByTestId(FILTER_BY_FOOD_BTN);
       const filterByDrink = screen.getByTestId('filter-by-drink-btn');
       const firstFavImage = await screen.findByTestId('0-horizontal-image');
       const firstFavTopText = await screen.findByTestId('0-horizontal-top-text');
