@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
-import unfavoriteIcon from '../images/blackHeartIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 let allFavRecipes = [];
 
@@ -42,7 +42,6 @@ function FavoriteRecipes() {
 
   function unfavoriteRecipe(unfav) {
     const newArray = favRecipes.filter((_ele, index) => index !== unfav);
-    console.log(newArray);
     setFavRecipes(newArray);
     localStorage.setItem('favoriteRecipes', JSON.stringify(newArray));
   }
@@ -106,10 +105,10 @@ function FavoriteRecipes() {
             type="button"
             data-testid={ `${index}-horizontal-favorite-btn` }
             onClick={ () => unfavoriteRecipe(index) }
-            src={ unfavoriteIcon }
+            src={ blackHeartIcon }
           >
             <img
-              src={ unfavoriteIcon }
+              src={ blackHeartIcon }
               alt="Unfavorite recipe"
             />
           </button>
