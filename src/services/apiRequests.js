@@ -44,4 +44,21 @@ export async function fetchFoodIngredients() {
 export async function fetchDrinkIngredients() {
   const drinksIngredientsEndpoint = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
   return handleFetch(drinksIngredientsEndpoint);
+
+export async function fetchCategories(type) {
+  const foodENDPOINT = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
+  const drinkENDPOINT = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
+  if (type === 'meals') return handleFetch(foodENDPOINT);
+  if (type === 'drinks') return handleFetch(drinkENDPOINT);
+}
+
+export async function fetchRenderCategories(type, categorie) {
+  const foodENDPOINT = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${categorie}`;
+  const drinkENDPOINT = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${categorie}`;
+  console.log(foodENDPOINT);
+  if (type === 'meals') {
+    return handleFetch(foodENDPOINT);
+  } if (type === 'drinks') {
+    return handleFetch(drinkENDPOINT);
+  }
 }
