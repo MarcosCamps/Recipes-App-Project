@@ -44,6 +44,7 @@ export async function fetchFoodIngredients() {
 export async function fetchDrinkIngredients() {
   const drinksIngredientsEndpoint = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
   return handleFetch(drinksIngredientsEndpoint);
+}
 
 export async function fetchCategories(type) {
   const foodENDPOINT = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
