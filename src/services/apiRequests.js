@@ -35,3 +35,13 @@ export async function randomAPIDrink() {
   const drinkEndpoint = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
   return handleFetch(drinkEndpoint);
 }
+
+export async function fetchFoodIngredients() {
+  const foodsIngredientsEndpoint = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
+  return handleFetch(foodsIngredientsEndpoint);
+}
+
+export async function fetchDrinkIngredients() {
+  const drinksIngredientsEndpoint = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
+  return handleFetch(drinksIngredientsEndpoint);
+}
