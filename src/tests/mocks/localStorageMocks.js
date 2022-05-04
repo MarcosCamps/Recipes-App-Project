@@ -1,5 +1,5 @@
 const email = { email: 'email@test.com' };
-const favoriteRecipes = [
+export const favoriteRecipes = [
   {
     id: '52771',
     type: 'food',
@@ -18,6 +18,16 @@ const favoriteRecipes = [
     name: 'Aquamarine',
     image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
   },
+];
+export const oneFavoriteArray = [{
+  id: '178319',
+  type: 'drink',
+  nationality: '',
+  category: 'Cocktail',
+  alcoholicOrNot: 'Alcoholic',
+  name: 'Aquamarine',
+  image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
+},
 ];
 
 export default function setLocalStorage() {
