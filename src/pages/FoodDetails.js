@@ -2,7 +2,7 @@ import React from 'react';
 
 function FoodDetails() {
   return (
-    <h1>Tela de FoodDEtails</h1>
+    <h1>Tela de FoodDetails</h1>
   );
 }
 
