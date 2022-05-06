@@ -4,6 +4,12 @@
 // import renderWithRouter from './renderWithRouter';
 // import App from '../App';
 // import { setLocalStorage } from './mocks/localStorageMocks';
+// import React from 'react';
+// import { screen } from '@testing-library/react';
+// import userEvent from '@testing-library/user-event';
+// import renderWithRouter from './renderWithRouter';
+// import App from '../App';
+// import setLocalStorage from './mocks/localStorageMocks';
 
 // describe(
 //   'Verifica se a tela de Perfil possui um elemento email, um botão '

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import recipesContext from '../context/RecipesContext';
-import { fetchSearchByName } from '../services/apiRequests';
+import { fetchSearchByName, fetchSearchByIngredient } from '../services/apiRequests';
 import '../Styles/home.css';
 import Categories from '../components/Categories';
 
@@ -16,6 +16,8 @@ function DrinksHome() {
     setRecipes,
     isSearching,
     setIsSearching,
+    selectedIngredient,
+    setSelectedIngredient,
   } = useContext(recipesContext);
 
   useEffect(() => {
@@ -24,7 +26,14 @@ function DrinksHome() {
       setRecipes(response);
       setIsSearching(true);
     };
-    recipesFetch();
+    const recipesFetchByIngredient = async (ingredient) => {
+      const response = await fetchSearchByIngredient(ingredient, 'Drinks');
+      setRecipes(response);
+      setIsSearching(true);
+      setSelectedIngredient('any');
+    };
+    if (selectedIngredient === 'any') recipesFetch();
+    if (selectedIngredient !== 'any') recipesFetchByIngredient(selectedIngredient);
   }, []);
 
   return (
