@@ -1,7 +1,6 @@
 async function handleFetch(endpoint) {
   const fetchAPi = await fetch(endpoint);
   const response = await fetchAPi.json();
-  console.log(response);
   return response;
 }
 
@@ -57,6 +56,16 @@ export async function fetchRenderCategories(type, categorie) {
   const foodENDPOINT = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${categorie}`;
   const drinkENDPOINT = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${categorie}`;
   console.log(foodENDPOINT);
+  if (type === 'meals') {
+    return handleFetch(foodENDPOINT);
+  } if (type === 'drinks') {
+    return handleFetch(drinkENDPOINT);
+  }
+}
+
+export async function fetchForID(type, id) {
+  const foodENDPOINT = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+  const drinkENDPOINT = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
   if (type === 'meals') {
     return handleFetch(foodENDPOINT);
   } if (type === 'drinks') {
