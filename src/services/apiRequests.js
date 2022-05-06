@@ -63,7 +63,6 @@ export async function fetchRenderCategories(type, categorie) {
   }
 }
 
-
 export async function fetchByNacionality() {
   const nacionalityEndpoint = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
   return handleFetch(nacionalityEndpoint);
@@ -82,3 +81,4 @@ export async function fetchForID(type, id) {
   } if (type === 'drinks') {
     return handleFetch(drinkENDPOINT);
   }
+}
