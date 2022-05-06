@@ -1,7 +1,6 @@
 async function handleFetch(endpoint) {
   const fetchAPi = await fetch(endpoint);
   const response = await fetchAPi.json();
-  console.log(response);
   return response;
 }
 
@@ -64,6 +63,7 @@ export async function fetchRenderCategories(type, categorie) {
   }
 }
 
+
 export async function fetchByNacionality() {
   const nacionalityEndpoint = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
   return handleFetch(nacionalityEndpoint);
@@ -73,3 +73,12 @@ export async function fetchFoodNacionality(value) {
   const foodNacionalityEndpoint = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${value}`;
   return handleFetch(foodNacionalityEndpoint);
 }
+
+export async function fetchForID(type, id) {
+  const foodENDPOINT = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+  const drinkENDPOINT = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
+  if (type === 'meals') {
+    return handleFetch(foodENDPOINT);
+  } if (type === 'drinks') {
+    return handleFetch(drinkENDPOINT);
+  }
