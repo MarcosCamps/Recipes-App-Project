@@ -13,7 +13,6 @@ function FoodProgress(props) {
   const [informations, setInformations] = useState('');
   const [isCopied, setIsCopied] = useState(false);
   const copiedText = 'Link copied!';
-  console.log(informations, 'informations');
 
   function copyUrl() {
     setIsCopied(true);

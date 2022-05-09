@@ -9,8 +9,6 @@ function FinishReceipe(props) {
   const [validateBtn, setValidateBtn] = useState(true);
   const [redirectLink, setRedirectLink] = useState(false);
   const responseStorage = JSON.parse(localStorage.getItem('doneRecipes'));
-  console.log(Ingredients(), 'allingredients');
-  console.log(ingredientsCheckedStore, 'ingredients checked');
 
   useEffect(() => {
     const removeStringNull = Ingredients()
@@ -24,8 +22,6 @@ function FinishReceipe(props) {
     }
   }, [Ingredients, ingredientsCheckedStore]);
 
-  console.log(Information, 'info');
-
   const Finish = () => {
     let tags = '';
     if (typeof Information.strTags !== 'string' && Information.strTags !== null) {
@@ -34,14 +30,9 @@ function FinishReceipe(props) {
       tags = Information.strTags.split(',');
     }
 
-    const progressModel = {
-      cocktails: {},
-      meals: {},
-    };
-
     const responseModel = {
       id: Information[`id${type}`],
-      type,
+      type: type === 'Drink' ? 'drink' : 'food',
       nationality: type === 'Drink' ? '' : Information.strArea,
       category: Information.strCategory,
       alcoholicOrNot: type === 'Drink' ? Information.strAlcoholic : '',
@@ -56,7 +47,7 @@ function FinishReceipe(props) {
     } else {
       localStorage.setItem('doneRecipes', JSON.stringify([responseModel]));
     }
-    localStorage.setItem('inProgressRecipes', JSON.stringify(progressModel));
+    localStorage.setItem('inProgressRecipes', JSON.stringify(null));
     setRedirectLink(true);
   };
 
