@@ -34,14 +34,9 @@ function FinishReceipe(props) {
       tags = Information.strTags.split(',');
     }
 
-    const progressModel = {
-      cocktails: {},
-      meals: {},
-    };
-
     const responseModel = {
       id: Information[`id${type}`],
-      type,
+      type: type === 'Drink' ? 'drink' : 'food',
       nationality: type === 'Drink' ? '' : Information.strArea,
       category: Information.strCategory,
       alcoholicOrNot: type === 'Drink' ? Information.strAlcoholic : '',
@@ -56,7 +51,7 @@ function FinishReceipe(props) {
     } else {
       localStorage.setItem('doneRecipes', JSON.stringify([responseModel]));
     }
-    localStorage.setItem('inProgressRecipes', JSON.stringify(progressModel));
+    localStorage.setItem('inProgressRecipes', JSON.stringify(null));
     setRedirectLink(true);
   };
 
