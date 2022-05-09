@@ -9,8 +9,6 @@ function FinishReceipe(props) {
   const [validateBtn, setValidateBtn] = useState(true);
   const [redirectLink, setRedirectLink] = useState(false);
   const responseStorage = JSON.parse(localStorage.getItem('doneRecipes'));
-  console.log(Ingredients(), 'allingredients');
-  console.log(ingredientsCheckedStore, 'ingredients checked');
 
   useEffect(() => {
     const removeStringNull = Ingredients()
@@ -23,8 +21,6 @@ function FinishReceipe(props) {
       setValidateBtn(validateIngredient);
     }
   }, [Ingredients, ingredientsCheckedStore]);
-
-  console.log(Information, 'info');
 
   const Finish = () => {
     let tags = '';
