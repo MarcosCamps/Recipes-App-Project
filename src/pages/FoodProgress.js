@@ -4,6 +4,7 @@ import { fetchForID } from '../services/apiRequests';
 import CheckboxProgress from '../components/FoodProgress/checkbox';
 import shareIcon from '../images/shareIcon.svg';
 import FavoriteBtn from '../components/FoodProgress/favoriteBtn';
+import FinishReceipe from '../components/FoodProgress/FinishReceipe';
 
 const copy = require('clipboard-copy');
 
@@ -12,6 +13,7 @@ function FoodProgress(props) {
   const [informations, setInformations] = useState('');
   const [isCopied, setIsCopied] = useState(false);
   const copiedText = 'Link copied!';
+  console.log(informations, 'informations');
 
   function copyUrl() {
     setIsCopied(true);
@@ -68,7 +70,11 @@ function FoodProgress(props) {
           ofType="cocktails"
         />
         <h4 data-testid="instructions">{ informations.strInstructions }</h4>
-        <button data-testid="finish-recipe-btn" type="button">Finalizar receita</button>
+        <FinishReceipe
+          Ingredients={ Ingredients }
+          Information={ informations }
+          type="Meal"
+        />
       </div>
     )
   );

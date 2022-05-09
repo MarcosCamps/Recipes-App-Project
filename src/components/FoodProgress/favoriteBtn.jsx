@@ -24,7 +24,6 @@ function FavoriteBtn(props) {
       const validateButtonFav = responseStorage.some((recipes) => recipes.id === id);
       setButtonFav(validateButtonFav);
     }
-    console.log(responseStorage, 'responsestorage');
   }, [id, responseStorage]);
 
   const ClickButtonFavorite = () => {

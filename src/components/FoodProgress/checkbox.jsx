@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
+import recipesContext from '../../context/RecipesContext';
 
 function CheckboxProgress(props) {
   const [ingredientsChecked, setIngredientsChecked] = useState('');
+  const { setIngredientsCheckedStore } = useContext(recipesContext);
   const historyStorage = JSON.parse(localStorage.getItem('inProgressRecipes'));
   const { Ingredients, id, type, ofType } = props;
-  console.log(ingredientsChecked, 'ingredients');
 
   useEffect(() => {
     if (historyStorage !== null && ingredientsChecked === '') {
@@ -19,6 +20,7 @@ function CheckboxProgress(props) {
         },
       };
       localStorage.setItem('inProgressRecipes', JSON.stringify(firstStorage));
+      setIngredientsCheckedStore(ingredientsChecked);
     } else {
       const addStorage = {
         [ofType]: historyStorage[ofType],
@@ -27,11 +29,12 @@ function CheckboxProgress(props) {
         },
       };
       localStorage.setItem('inProgressRecipes', JSON.stringify(addStorage));
+      setIngredientsCheckedStore(ingredientsChecked);
     }
-  }, [Ingredients, id, type, ofType, ingredientsChecked, historyStorage]);
+  }, [Ingredients,
+    id, type, ofType, ingredientsChecked, historyStorage, setIngredientsCheckedStore]);
 
   const addIngredientsCheckeds = ({ target }) => {
-    console.log(target.value);
     if (target.checked === true) {
       const addIngredients = [...ingredientsChecked, target.value];
       setIngredientsChecked(addIngredients);
@@ -50,7 +53,6 @@ function CheckboxProgress(props) {
         return result;
       } return false;
     });
-  console.log(validate);
 
   return (
     <div>
