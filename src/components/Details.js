@@ -8,42 +8,36 @@ export default function Details({ id, type }) {
   const [isLoadingDetails, setIsLoadingDetails] = useState(true);
   let typeName = 'strDrink';
   let category = 'strAlcoholic';
+  let keyType = 'drinks';
+
   if (type === 'foods') {
     typeName = 'strMeal';
     category = 'strCategory';
+    keyType = 'meals';
   }
 
   useEffect(() => {
-    function renderIngredients() {
+    function renderIngredients(recipe) {
       let count = 1;
-      let haveIngredient = true;
       const result = [];
-      while (haveIngredient) {
-        if (detailsArray[`strIngredient${count}`]) {
-          const ing = detailsArray[`strIngredient${count}`];
-          const mesuare = detailsArray[`strMeasure${count}`];
-          result.push(`${ing} ${mesuare}`);
-          count += 1;
-        } else {
-          haveIngredient = false;
-        }
+      let noMeasure = 'str';
+      do {
+        const ing = recipe[`strIngredient${count}`];
+        const mesuare = recipe[`strMeasure${count}`];
+        result.push(`${ing} ${mesuare}`);
+        count += 1;
+        noMeasure = recipe[`strIngredient${count}`];
       }
+      while (noMeasure);
       setIsLoadingDetails(false);
       return result;
     }
 
     const getDetails = async () => {
       const result = await fetchSearchById(id, type);
-      if (type === 'foods') {
-        const { meals } = result;
-        const [initial] = meals;
-        setDetailsArray(initial);
-      } else {
-        const { drinks } = result;
-        const [initial] = drinks;
-        setDetailsArray(initial);
-      }
-      setIngredients(renderIngredients());
+      setDetailsArray(result[keyType][0]);
+      const recipes = renderIngredients(result[keyType][0]);
+      setIngredients(recipes);
     };
     getDetails();
   // eslint-disable-next-line react-hooks/exhaustive-deps
