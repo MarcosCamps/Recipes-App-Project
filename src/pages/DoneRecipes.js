@@ -89,14 +89,7 @@ function DoneRecipes() {
           </Link>
           <p data-testid={ `${index}-horizontal-done-date` }>{ recipe.doneDate }</p>
           <ul>
-            { recipe.tags && recipe.tags.map((tag) => (
-              <li
-                key={ tag }
-                data-testid={ `${index}-${tag}-horizontal-tag` }
-              >
-                { tag }
-              </li>
-            ))}
+            { recipe.tags }
           </ul>
           <button
             type="button"
