@@ -31,7 +31,7 @@ function FinishReceipe(props) {
     if (typeof Information.strTags !== 'string' && Information.strTags !== null) {
       tags = [...Information.strTags];
     } else if (Information.strTags !== null) {
-      tags = Information.strTags;
+      tags = Information.strTags.split(',');
     }
 
     const progressModel = {
