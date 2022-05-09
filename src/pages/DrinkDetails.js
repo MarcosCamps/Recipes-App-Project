@@ -1,9 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Details from '../components/Details';
 
-function DrinkDetails() {
+export default function DrinkDetails({ history: { location: { pathname } } }) {
+  const string = pathname.split('/');
+  const type = string[1];
+  const id = string[2];
+
   return (
-    <h1>Tela de DrinkDetails</h1>
+    <Details id={ id } type={ type } />
   );
 }
 
-export default DrinkDetails;
+DrinkDetails.propTypes = {
+  pathname: PropTypes.string,
+}.isRequired;

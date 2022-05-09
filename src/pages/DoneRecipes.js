@@ -117,6 +117,3 @@ function DoneRecipes() {
 }
 
 export default DoneRecipes;
-
-/*
-As tags da receita devem possuir o atributo data-testid=${index}-${tagName}-horizontal-tag; */
