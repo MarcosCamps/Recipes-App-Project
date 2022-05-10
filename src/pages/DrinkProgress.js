@@ -45,7 +45,7 @@ function DrinkProgress(props) {
           src={ informations.strDrinkThumb }
           alt="photoMeal"
           data-testid="recipe-photo"
-          width="300px"
+          width="360px"
         />
         <h2
           data-testid="recipe-title"
@@ -80,7 +80,12 @@ function DrinkProgress(props) {
           type="cocktails"
           ofType="meals"
         />
-        <h4 data-testid="instructions">{ informations.strInstructions }</h4>
+        <h4
+          data-testid="instructions"
+          className="instructionsProgress"
+        >
+          { informations.strInstructions }
+        </h4>
         <FinishReceipe
           Ingredients={ Ingredients }
           Information={ informations }
