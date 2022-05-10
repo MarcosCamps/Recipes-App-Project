@@ -45,6 +45,7 @@ function FavoriteBtn(props) {
       data-testid="favorite-btn"
       onClick={ ClickButtonFavorite }
       src={ buttonFav === false ? favoriteIconWhite : favoriteIconBlack }
+      className="buttonProgress buttonFavoriteProgress"
       alt="favorite-btn"
     >
       <img
