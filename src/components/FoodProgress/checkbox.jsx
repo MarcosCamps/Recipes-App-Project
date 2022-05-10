@@ -74,7 +74,7 @@ function CheckboxProgress(props) {
                 value={ ingredient }
                 id={ `ingredient${index}` }
                 onChange={ addIngredientsCheckeds }
-                checked={ validate[index] }
+                defaultChecked={ validate[index] }
               />
             </div>
           );

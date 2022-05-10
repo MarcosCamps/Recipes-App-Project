@@ -12,7 +12,7 @@ function Footer() {
         src="drinkIcon"
         data-testid="drinks-bottom-btn"
       >
-        <img src={ drinkIcon } alt="drinkIcon" />
+        <img src={ drinkIcon } style={ { filter: '#fafafa' } } alt="drinkIcon" />
 
       </a>
       <a
