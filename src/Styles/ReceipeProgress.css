@@ -1,0 +1,44 @@
+.titleProgress {
+  background: #ffc800;
+  mix-blend-mode: normal;
+  padding: 10px;
+  position: absolute;
+  top: 260px;
+  width: 360px;
+}
+
+.buttonProgress {
+  background-color: #ffc800;
+  border: 1px;
+}
+
+.buttonShareProgress {
+  left: 260px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: 270px;
+}
+
+.buttonFavoriteProgress {
+  left: 310px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: 270px;
+}
+
+.textCopiedProgress {
+  left: 200px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: 295px;
+}
+
+.categoryProgress {
+  background-color: #ff990d;
+  mix-blend-mode: normal;
+  padding: 5px;
+  position: absolute;
+  text-align: center;
+  top: 10px;
+  width: 360px;
+}

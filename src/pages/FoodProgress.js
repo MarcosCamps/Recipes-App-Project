@@ -5,6 +5,7 @@ import CheckboxProgress from '../components/FoodProgress/checkbox';
 import shareIcon from '../images/shareIcon.svg';
 import FavoriteBtn from '../components/FoodProgress/favoriteBtn';
 import FinishReceipe from '../components/FoodProgress/FinishReceipe';
+import '../Styles/ReceipeProgress.css';
 
 const copy = require('clipboard-copy');
 
@@ -43,25 +44,37 @@ function FoodProgress(props) {
         <img
           src={ informations.strMealThumb }
           id="photo-progress"
-          width="300px"
+          width="360px"
           alt="photoMeal"
           data-testid="recipe-photo"
         />
-        <h2 data-testid="recipe-title">{ informations.strMeal }</h2>
+        <h2
+          data-testid="recipe-title"
+          className="titleProgress"
+        >
+          { informations.strMeal }
+
+        </h2>
         <button
           type="button"
           data-testid="share-btn"
           onClick={ () => copyUrl() }
+          className="buttonProgress buttonShareProgress"
         >
           <img src={ shareIcon } alt="shareIcon" />
         </button>
-        <p>{ isCopied && copiedText }</p>
+        <p className="textCopiedProgress">{ isCopied && copiedText }</p>
         <FavoriteBtn
           id={ id }
           informations={ informations }
           type={ ['food', 'Meal'] }
         />
-        <h3 data-testid="recipe-category">{ informations.strCategory }</h3>
+        <h3
+          data-testid="recipe-category"
+          className="categoryProgress"
+        >
+          { `Category: ${informations.strCategory}` }
+        </h3>
         <CheckboxProgress
           Ingredients={ Ingredients }
           id={ id }
