@@ -1,44 +1,59 @@
-main {
+.login-container {
   align-items: center;
-  background-image: url('https://i.pinimg.com/originals/d3/6d/46/d36d462db827833805497d9ea78a1343.jpg');
-  background-size: 200%;
-  display: flex;
-  height: 100vh;
-  padding-left: 23%;
-  width: 100vw;
-}
-
-.logincss {
-  background-color: rgb(212, 202, 166);
-  border-radius: 0.3rem 1rem;
-  box-shadow: 20px 15px 20px rgb(66, 53, 47);
+  background-image: url('../images/loginbg.jpg');
+  background-size: contain;
   display: flex;
   flex-direction: column;
-  height: 300px;
-  justify-content: center;
-  padding: 15px;
-  width: 270px;
+  height: 640px;
+  justify-content: space-around;
+  width: 360px;
 }
 
-.logincss input {
-  border: 1px solid darkgray;
-  border-radius: 7px;
-  margin: 3px auto;
-  outline: none;
-  padding: 4px;
-  width: 190px;
+.form-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
-.logincss h2 {
-  color: azure;
-  font-family: Verdana , Geneva , Tahoma , sans-serif;
-  font-size: 35px;
-  margin-bottom: 50px;
-  text-align: center;
+.form-container > input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #fafafa;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #fafafa;
+  height: 46px;
+  margin-bottom: 10px;
+  padding: 20px;
+  width: 257px;
 }
 
-.logincss button {
-  margin: 20px auto 40px 105px;
-  margin-left: 90px;
-  text-align: center;
+.form-container > input::placeholder {
+  color: #fafafa;
+  font-size: 1.2em;
 }
+
+.title-container {
+  color: #fafafa;
+  font-weight: 800;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.login-button {
+  background-color: #fafafa25;
+  border: 2px solid white;
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #fafafa;
+  font-weight: 800;
+  height: 40px;
+  padding: 0 20px;
+  width: 90px;
+}
+
+.login-button:disabled, .login-button[ disabled ] {
+  background-color: #e7e7e7c7;
+  border: none;
+  border-color: none;
+  color: #ff990d;
+}
+
