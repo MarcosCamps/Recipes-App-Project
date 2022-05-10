@@ -11,8 +11,13 @@ function Footer() {
         href="/drinks"
         src="drinkIcon"
         data-testid="drinks-bottom-btn"
+        className="drinkIcon"
       >
-        <img src={ drinkIcon } alt="drinkIcon" />
+        <img
+          src={ drinkIcon }
+          alt="drinkIcon"
+          className="imgFooter"
+        />
 
       </a>
       <a
@@ -20,15 +25,24 @@ function Footer() {
         src="exploreIcon"
         data-testid="explore-bottom-btn"
       >
-        <img src={ exploreIcon } alt="exploreIcon" />
+        <img
+          src={ exploreIcon }
+          alt="exploreIcon"
+          className="imgFooter"
+        />
 
       </a>
       <a
         href="/foods"
         src="mealIcon"
         data-testid="food-bottom-btn"
+        className="mealIcon"
       >
-        <img src={ mealIcon } alt="mealIcon" />
+        <img
+          src={ mealIcon }
+          alt="mealIcon"
+          className="imgFooter"
+        />
 
       </a>
     </footer>
