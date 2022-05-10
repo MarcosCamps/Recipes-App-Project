@@ -1,8 +1,8 @@
 .footerPage {
-  background-color: antiquewhite;
+  background-color: #ff990d;
   bottom: 0;
   display: flex;
-  height: 100px;
+  height: 58px;
   justify-content: space-around;
   line-height: 100px;
   position: fixed;

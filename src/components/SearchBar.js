@@ -83,13 +83,8 @@ function SearchBar({ Title }) {
   return (
     <div>
       <section className="search-container">
-        <input
-          type="text"
-          data-testid="search-input"
-          value={ searchInput }
-          onChange={ ({ target: { value } }) => setSearchInput(value) }
-        />
         <div
+          className="search-type-container"
           name="search-type"
           value={ searchType }
           onChange={ ({ target: { value } }) => setSearchType(value) }
@@ -125,6 +120,12 @@ function SearchBar({ Title }) {
             />
           </label>
         </div>
+        <input
+          type="text"
+          data-testid="search-input"
+          value={ searchInput }
+          onChange={ ({ target: { value } }) => setSearchInput(value) }
+        />
         <button
           type="button"
           data-testid="exec-search-btn"
