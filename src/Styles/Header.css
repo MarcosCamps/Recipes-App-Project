@@ -1,0 +1,35 @@
+.header-container {
+  align-items: center;
+  background-color: #ff990d;
+  color: #fafafa;
+  display: flex;
+  height: 58px;
+  justify-content: space-around;
+  line-height: 100px;
+  position: fixed;
+  top: 0;
+  width: 360px;
+  z-index: 1;
+}
+
+.header-container button {
+  background: none;
+  border: none;
+}
+
+.header-container button img {
+  filter: invert();
+}
+
+.search-container {
+  background-color: red;
+  position: fixed;
+  top: 58px;
+  width: 100%;
+}
+
+.search-type-container {
+  align-content: center;
+  display: flex;
+  justify-content: space-around;
+}

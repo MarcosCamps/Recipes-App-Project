@@ -5,6 +5,7 @@ import CheckboxProgress from '../components/FoodProgress/checkbox';
 import shareIcon from '../images/shareIcon.svg';
 import FavoriteBtn from '../components/FoodProgress/favoriteBtn';
 import FinishReceipe from '../components/FoodProgress/FinishReceipe';
+import '../Styles/ReceipeProgress.css';
 
 const copy = require('clipboard-copy');
 
@@ -44,31 +45,47 @@ function DrinkProgress(props) {
           src={ informations.strDrinkThumb }
           alt="photoMeal"
           data-testid="recipe-photo"
-          width="300px"
+          width="360px"
         />
-        <h2 data-testid="recipe-title">{ informations.strDrink }</h2>
+        <h2
+          data-testid="recipe-title"
+          className="titleProgress"
+        >
+          { informations.strDrink }
+        </h2>
         <button
           type="button"
           data-testid="share-btn"
           onClick={ () => copyUrl() }
           src="../images/shareIcon.svg"
+          className="buttonProgress buttonShareProgress"
         >
           <img src={ shareIcon } alt="shareIcon" />
         </button>
-        <p>{ isCopied && copiedText }</p>
+        <p className="textCopiedProgress">{ isCopied && copiedText }</p>
         <FavoriteBtn
           id={ id }
           informations={ informations }
           type={ ['drink', 'Drink'] }
         />
-        <h3 data-testid="recipe-category">{ informations.strCategory }</h3>
+        <h3
+          data-testid="recipe-category"
+          className="categoryProgress"
+        >
+          { `Category: ${informations.strCategory}` }
+        </h3>
         <CheckboxProgress
           Ingredients={ Ingredients }
           id={ id }
           type="cocktails"
           ofType="meals"
         />
-        <h4 data-testid="instructions">{ informations.strInstructions }</h4>
+        <h4
+          data-testid="instructions"
+          className="instructionsProgress"
+        >
+          { informations.strInstructions }
+        </h4>
         <FinishReceipe
           Ingredients={ Ingredients }
           Information={ informations }

@@ -1,6 +1,7 @@
 import PropTypes, { string } from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import recipesContext from '../../context/RecipesContext';
 
 function FinishReceipe(props) {
@@ -53,14 +54,16 @@ function FinishReceipe(props) {
 
   return (
     <>
-      <button
+      <Button
         data-testid="finish-recipe-btn"
+        className="finishProgress"
         type="button"
         disabled={ validateBtn }
         onClick={ Finish }
+        variant="warning"
       >
         Finalizar receita
-      </button>
+      </Button>
       { redirectLink && <Redirect to="/done-recipes" /> }
     </>
   );
