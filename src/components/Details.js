@@ -132,7 +132,7 @@ export default function Details({ id, type }) {
               src={ `${detailsArray.strYoutube}?autoplay=0` }
               title="Vídeo da receita"
             /> }
-          <div data-testid="recomendation-card" className="carousel">
+          <div className="carousel">
             { recomendations.map((card, index) => (
               <div key={ index } className="item">
                 <img
