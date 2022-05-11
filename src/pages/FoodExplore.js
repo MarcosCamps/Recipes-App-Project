@@ -12,7 +12,7 @@ function FoodExplore({ history }) {
     history.push(`/foods/${randomMeal.meals[0].idMeal}`);
   };
   return (
-    <div>
+    <div style={ { 'margin-top': '70px' } }>
       <Header Title="Explore Foods" />
       <section>
         <Link to="/explore/foods/ingredients">

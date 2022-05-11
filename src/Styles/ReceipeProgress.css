@@ -44,7 +44,7 @@
 }
 
 .ingredientsProgress {
-  border-bottom: 1px solid #e8c493;
+  border-bottom: 0.5px solid #e8c493;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-evenly;

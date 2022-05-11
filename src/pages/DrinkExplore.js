@@ -11,7 +11,7 @@ function DrinkExplore({ history }) {
     history.push(`/drinks/${randomDrink.drinks[0].idDrink}`);
   };
   return (
-    <div>
+    <div style={ { 'margin-top': '70px' } }>
       <Header Title="Explore Drinks" />
       <section>
         <Link to="/explore/drinks/ingredients">
