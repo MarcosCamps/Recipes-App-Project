@@ -60,22 +60,24 @@ function CheckboxProgress(props) {
         if (ingredient) {
           return (
             <div
-              className="ingredient"
+              className="ingredientsProgress"
               data-testid={ `${index}-ingredient-step` }
               key={ index }
             >
               <label
                 htmlFor={ `ingredient${index}` }
+                className="labelProgress"
               >
                 { ingredient }
+                <input
+                  type="checkbox"
+                  value={ ingredient }
+                  id={ `ingredient${index}` }
+                  className="checkboxProgress"
+                  onChange={ addIngredientsCheckeds }
+                  defaultChecked={ validate[index] }
+                />
               </label>
-              <input
-                type="checkbox"
-                value={ ingredient }
-                id={ `ingredient${index}` }
-                onChange={ addIngredientsCheckeds }
-                defaultChecked={ validate[index] }
-              />
             </div>
           );
         } return null;

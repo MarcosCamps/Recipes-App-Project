@@ -81,7 +81,12 @@ function FoodProgress(props) {
           type="meals"
           ofType="cocktails"
         />
-        <h4 data-testid="instructions">{ informations.strInstructions }</h4>
+        <h4
+          data-testid="instructions"
+          className="instructionsProgress"
+        >
+          { informations.strInstructions }
+        </h4>
         <FinishReceipe
           Ingredients={ Ingredients }
           Information={ informations }
