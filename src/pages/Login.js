@@ -13,7 +13,7 @@ function Login() {
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isEmailValid = email.match(regexEmail);
     const MIN_LENGTH_VALUE = 6;
-    const minPasswordValid = password.length > MIN_LENGTH_VALUE;
+    const minPasswordValid = password.length >= MIN_LENGTH_VALUE;
     if (isEmailValid && minPasswordValid) {
       setBtnDisabled(false);
     } else {

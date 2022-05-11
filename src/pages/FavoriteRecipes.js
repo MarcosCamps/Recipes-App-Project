@@ -47,7 +47,7 @@ function FavoriteRecipes() {
   }
 
   return (
-    <>
+    <section style={ { 'margin-top': '70px' } }>
       <Header Title="Favorite Recipes" />
       <button
         type="button"
@@ -115,7 +115,7 @@ function FavoriteRecipes() {
           <p>{ isCopied && copiedText }</p>
         </section>
       )) }
-    </>
+    </section>
   );
 }
 
