@@ -18,6 +18,26 @@ export async function fetchSearchByIngredient(ingredient, type) {
   if (type === 'Drinks') return handleFetch(drinkEndpoint);
 }
 
+export async function fetchSixByType(type) {
+  const foodEndpoint = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+  const drinkEndpoint = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+  const MAGIC_NUMBER = 6;
+  if (type === 'meals') {
+    const foods = await handleFetch(foodEndpoint);
+    console.log(foods.meals);
+    const result = foods.meals.slice(0, MAGIC_NUMBER);
+    console.log(result);
+    return result;
+  }
+  if (type === 'drinks') {
+    const drinks = await handleFetch(drinkEndpoint);
+    console.log(drinks.drinks);
+    const result = drinks.drinks.slice(0, MAGIC_NUMBER);
+    console.log(result);
+    return result;
+  }
+}
+
 export async function fetchSearchByName(name, type) {
   const foodEndpoint = `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`;
   const drinkEndpoint = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`;

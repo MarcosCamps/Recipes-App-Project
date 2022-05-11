@@ -1,0 +1,25 @@
+.carousel .carousel-title {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.carousel {
+  display: flex;
+  margin-bottom: 120px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel .item {
+  flex: none;
+  height: 200px;
+  margin: 0 5px;
+  overflow-y: hidden;
+  scroll-snap-align: start;
+  width: 170px;
+}
+
+.carousel .item img {
+  height: 80%;
+  width: 100%;
+}
