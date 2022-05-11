@@ -51,7 +51,7 @@
 }
 
 .profile-logout-btn {
-  background: radial-gradient(93.7% 244.67% at 50% 66.67%, #ff9f00 0%, rgba(255, 199, 0, 0) 100%);
+  background-color: #ff9f00;
   border: 1px solid rgb(196, 194, 194);
   border-radius: 6px;
   box-shadow: 1px 5px 4px 2px rgba(0, 0, 0, 0.25);
