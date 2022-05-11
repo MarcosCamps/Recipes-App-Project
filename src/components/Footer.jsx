@@ -18,7 +18,6 @@ function Footer() {
           alt="drinkIcon"
           className="imgFooter"
         />
-
       </a>
       <a
         href="/explore"

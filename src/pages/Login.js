@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import '../Styles/loginCss.css';
 
 function Login() {
   const [email, setEmail] = useState('');
+  const history = useHistory();
   // console.log(email);
   const [password, setPassword] = useState('');
   const [btnDisabled, setBtnDisabled] = useState(true);
@@ -12,7 +13,7 @@ function Login() {
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isEmailValid = email.match(regexEmail);
     const MIN_LENGTH_VALUE = 6;
-    const minPasswordValid = password.length >= MIN_LENGTH_VALUE;
+    const minPasswordValid = password.length > MIN_LENGTH_VALUE;
     if (isEmailValid && minPasswordValid) {
       setBtnDisabled(false);
     } else {
@@ -40,22 +41,21 @@ function Login() {
   const handleClick = () => {
     handleDisabled();
     getLocalStorage();
+    history.push('/foods');
   };
 
-  // useEffect(() => {
-  //   handleDisabled();
-  // }, [email, password]);
-
   return (
-    <main>
-      <div className="logincss">
-        <h2>Login</h2>
+    <main className="login-container">
+      <div className="title-container">
+        <h1>Recipes App</h1>
+      </div>
+      <div className="form-container">
         <input
           data-testid="email-input"
           type="email"
           name="email"
           value={ email }
-          placeholder="Digite seu email"
+          placeholder="E-mail"
           onChange={ handleEmail }
         />
         <input
@@ -63,20 +63,19 @@ function Login() {
           type="password"
           name="password"
           value={ password }
-          placeholder="Digite sua senha"
+          placeholder="Password"
           onChange={ handlePassword }
         />
-        <Link to="/foods">
-          <button
-            data-testid="login-submit-btn"
-            type="submit"
-            name="enterButton"
-            onClick={ handleClick }
-            disabled={ btnDisabled }
-          >
-            Enter
-          </button>
-        </Link>
+        <button
+          data-testid="login-submit-btn"
+          type="submit"
+          name="enterButton"
+          className="login-button"
+          onClick={ handleClick }
+          disabled={ btnDisabled }
+        >
+          Enter
+        </button>
       </div>
     </main>
   );

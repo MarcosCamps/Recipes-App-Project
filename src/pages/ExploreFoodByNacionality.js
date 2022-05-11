@@ -69,11 +69,10 @@ function ExploreFoodByNationality() {
           ))}
         </select>
       </label>
-      <section>
+      <section className="recipes-container">
         {isSearching
           ? recipes && recipes.meals.slice(0, limit).map((recipe, index) => (
             <div
-              className="recipes-container"
               data-testid={ `${index}-recipe-card` }
               key={ index }
               role="presentation"
@@ -91,7 +90,6 @@ function ExploreFoodByNationality() {
             foodNacionality.meals && foodNacionality.meals.slice(0, limit)
               .map((el, index) => (
                 <div
-                  className="recipes-container"
                   key={ index }
                   role="presentation"
                   data-testid={ `${index}-recipe-card` }
