@@ -63,7 +63,7 @@ function Categories(props) {
 
   console.log(categories[Type], 'categories aqui');
   return (
-    <div>
+    <div style={ { 'margin-top': '70px' } }>
       { renderizeCategories }
     </div>
   );

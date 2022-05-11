@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../Styles/Profile.css';
+import iconLogout from '../images/iconLogout.svg';
 
 function Profile() {
   const history = useHistory();
@@ -16,7 +17,7 @@ function Profile() {
     <>
       <Header Title="Profile" />
       <section className="profile-container">
-        <h1 data-testid="profile-email">{userEmail}</h1>
+        <h1 data-testid="profile-email" className="profile-email">{userEmail}</h1>
         <button
           type="button"
           className="profile-done-btn"
@@ -39,6 +40,7 @@ function Profile() {
           data-testid="profile-logout-btn"
           onClick={ logout }
         >
+          <img src={ iconLogout } alt="iconPerfil" className="logoutIcon" />
           Logout
         </button>
       </section>
