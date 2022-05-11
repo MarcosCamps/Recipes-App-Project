@@ -15,17 +15,24 @@
 .header-container button {
   background: none;
   border: none;
+  height: 58px;
+  position: relative;
+  width: 30px;
 }
 
 .header-container button img {
   filter: invert();
+  left: -5px;
+  position: absolute;
+  top: 15px;
 }
 
 .search-container {
   background-color: red;
+  padding: 10px;
   position: fixed;
   top: 58px;
-  width: 100%;
+  width: 360px;
 }
 
 .search-type-container {

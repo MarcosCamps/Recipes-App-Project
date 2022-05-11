@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { fetchSearchById, fetchSixByType } from '../services/apiRequests';
 import '../Styles/Carousel.css';
+import shareIcon from '../images/shareIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import StartRecipeBtn from './StartRecipeBtn';
 
 const copy = require('clipboard-copy');
 
@@ -12,6 +14,7 @@ export default function Details({ id, type }) {
   const [isLoadingDetails, setIsLoadingDetails] = useState(true);
   const [recomendations, setRecomendations] = useState([]);
   const [isCopied, setIsCopied] = useState(false);
+  const [isDoneRecipe, setIsDoneRecipe] = useState(false);
   const copiedText = 'Link copied!';
   let typeName = 'strDrink';
   let category = 'strAlcoholic';
@@ -20,6 +23,7 @@ export default function Details({ id, type }) {
   let recomendationsTypeName = 'strMeal';
   let recomendationsThumb = 'strMealThumb';
   let progressType = 'cocktails';
+  let imageType = 'strDrinkThumb';
 
   if (type === 'foods') {
     typeName = 'strMeal';
@@ -29,52 +33,23 @@ export default function Details({ id, type }) {
     recomendationsTypeName = 'strDrink';
     recomendationsThumb = 'strDrinkThumb';
     progressType = 'meals';
+    imageType = 'strMealThumb';
   }
 
   function copyUrl(theType, theId) {
     setIsCopied(true);
-    const url = `http://localhost:3000/${theType}s/${theId}`;
+    const url = `http://localhost:3000/${theType}/${theId}`;
     copy(url);
   }
 
-  function renderButton() {
+  function buttonToRender() {
     const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
-    const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    let isDoneRecipe = false;
-    let isInProgressRecipe = false;
-    doneRecipes.forEach((recipe) => {
-      if (recipe.name === detailsArray[typeName]) {
-        isDoneRecipe = true;
+    const isDoneEmpity = (doneRecipes) || [];
+    isDoneEmpity.forEach((recipe) => {
+      if (recipe.id === id) {
+        setIsDoneRecipe(true);
       }
     });
-    const idArray = Object.keys(inProgressRecipes[progressType]);
-    idArray.forEach((element) => {
-      if (element === id) {
-        isInProgressRecipe = true;
-      }
-    });
-    if (!isDoneRecipe) {
-      return (
-        <Link to={ `/${type}/${id}/in-progress` }>
-          <button
-            type="button"
-            data-testid="start-recipe-btn"
-          >
-            Start
-          </button>
-        </Link>
-      );
-    }
-    if (isInProgressRecipe) {
-      return (
-        <button
-          type="button"
-          data-testid="continue-recipe-btn"
-        >
-          Continue
-        </button>
-      );
-    }
   }
 
   useEffect(() => {
@@ -101,6 +76,7 @@ export default function Details({ id, type }) {
       setIngredients(recipes);
       const recomendationsResult = await fetchSixByType(recomendationsType);
       setRecomendations(recomendationsResult);
+      buttonToRender();
     };
     getDetails();
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -111,8 +87,9 @@ export default function Details({ id, type }) {
       { !isLoadingDetails && (
         <>
           <img
-            src={ detailsArray.strImageSource }
+            src={ detailsArray[imageType] }
             alt={ `${type}` }
+            style={ { width: '160px' } }
             data-testid="recipe-photo"
           />
           <h2
@@ -125,13 +102,14 @@ export default function Details({ id, type }) {
             data-testid="share-btn"
             onClick={ () => copyUrl(type, id) }
           >
-            <img src="../images/shareIcon" alt="Share button" />
+            <img src={ shareIcon } alt="Share button" />
           </button>
           <button
             type="button"
             data-testid="favorite-btn"
+            src={ whiteHeartIcon }
           >
-            Favorite
+            <img src={ whiteHeartIcon } alt="Share button" />
           </button>
           <p>{ isCopied && copiedText }</p>
           <p data-testid="recipe-category">{ detailsArray[category] }</p>
@@ -155,7 +133,7 @@ export default function Details({ id, type }) {
               title="Vídeo da receita"
             /> }
           <div data-testid="recomendation-card" className="carousel">
-            { recomendations && recomendations.map((card, index) => (
+            { recomendations.map((card, index) => (
               <div key={ index } className="item">
                 <img
                   data-testid={ `${index}-recomendation-card` }
@@ -171,9 +149,8 @@ export default function Details({ id, type }) {
               </div>
             )) }
           </div>
-          <footer className="footerPage">
-            { detailsArray && renderButton }
-          </footer>
+          { !isDoneRecipe && (
+            <StartRecipeBtn type={ type } id={ id } progressType={ progressType } />)}
         </>) }
     </section>
   );
