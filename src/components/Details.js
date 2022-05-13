@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { fetchSearchById, fetchSixByType } from '../services/apiRequests';
 import '../Styles/Carousel.css';
 import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import FavoriteBtn from './FoodProgress/favoriteBtn';
 import StartRecipeBtn from './StartRecipeBtn';
 
 const copy = require('clipboard-copy');
@@ -15,6 +15,7 @@ export default function Details({ id, type }) {
   const [recomendations, setRecomendations] = useState([]);
   const [isCopied, setIsCopied] = useState(false);
   const [isDoneRecipe, setIsDoneRecipe] = useState(false);
+  const [informations, setInformations] = useState({});
   const copiedText = 'Link copied!';
   let typeName = 'strDrink';
   let category = 'strAlcoholic';
@@ -24,6 +25,8 @@ export default function Details({ id, type }) {
   let recomendationsThumb = 'strMealThumb';
   let progressType = 'cocktails';
   let imageType = 'strDrinkThumb';
+  let strBtn = 'Drink';
+  const btnType = [type, strBtn];
 
   if (type === 'foods') {
     typeName = 'strMeal';
@@ -34,6 +37,7 @@ export default function Details({ id, type }) {
     recomendationsThumb = 'strDrinkThumb';
     progressType = 'meals';
     imageType = 'strMealThumb';
+    strBtn = 'Meal';
   }
 
   function copyUrl(theType, theId) {
@@ -71,8 +75,17 @@ export default function Details({ id, type }) {
 
     const getDetails = async () => {
       const result = await fetchSearchById(id, type);
-      setDetailsArray(result[keyType][0]);
-      const recipes = renderIngredients(result[keyType][0]);
+      const response = result[keyType][0];
+      setDetailsArray(response);
+      const infos = {
+        strAlcoholic: response.strAlcoholic,
+        strArea: response.strArea,
+        strCategory: response.strCategory,
+        strMeal: response[typeName],
+        strMealThumb: response[recomendationsThumb],
+      };
+      setInformations(infos);
+      const recipes = renderIngredients(response);
       setIngredients(recipes);
       const recomendationsResult = await fetchSixByType(recomendationsType);
       setRecomendations(recomendationsResult);
@@ -104,13 +117,7 @@ export default function Details({ id, type }) {
           >
             <img src={ shareIcon } alt="Share button" />
           </button>
-          <button
-            type="button"
-            data-testid="favorite-btn"
-            src={ whiteHeartIcon }
-          >
-            <img src={ whiteHeartIcon } alt="Share button" />
-          </button>
+          <FavoriteBtn id={ id } informations={ informations } type={ btnType } />
           <p>{ isCopied && copiedText }</p>
           <p data-testid="recipe-category">{ detailsArray[category] }</p>
           <ul>
